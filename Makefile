@@ -15,7 +15,7 @@ endif
 all: packageFile json11
 
 test: test.cc json11
-	g++ $(CFLAGS) -L. test.cc json11.so -o test
+	g++ $(CFLAGS) -L. test.cc json11.dylib -o test
 
 
 prefix=/usr/local
