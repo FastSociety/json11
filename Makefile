@@ -1,12 +1,12 @@
 #!/usr/bin/make -f
-CFLAGS += -D__STDC_CONSTANT_MACROS -Wall -std=c++11 -stdlib=libc++
+CFLAGS += -g -D__STDC_CONSTANT_MACROS -Wall -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-    CCFLAGS += -D LINUX
+    CFLAGS += -D LINUX -std=c++0x
 endif
 ifeq ($(UNAME_S),Darwin)
-    CCFLAGS += -D OSX
+    CFLAGS += -D OSX -std=c++11 -stdlib=libc++
 endif
 
 # test: json11.cc json11.h test.cc
