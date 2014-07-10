@@ -4,4 +4,5 @@ json11.so*
 .DS_Store
 .project
 *.o
+*.dylib
 
