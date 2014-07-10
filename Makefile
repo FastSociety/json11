@@ -14,10 +14,6 @@ endif
 
 all: packageFile json11
 
-test: test.cc json11
-	g++ $(CFLAGS) -L. test.cc json11.dylib -o test
-
-
 prefix=/usr/local
 libdir=${prefix}/lib
 pkgdir=${libdir}/pkgconfig
@@ -38,34 +34,38 @@ packageFile:
 	echo 'Libs: -L${libdir} -ljson11'       >> json11.pc
 	echo 'Cflags: -I${includedir}'          >> json11.pc
 
+test: test.cc json11
+	g++ $(CFLAGS) -L. test.cc libjson11.$(libextension) -o test
+
+
 ifeq ($(UNAME_S),Linux)
 json11: json11.cc json11.h
 	g++ -c $(CFLAGS) json11.cc -fno-rtti -fno-exceptions
-	g++ -fPIC -shared $(CFLAGS) -o json11.so.0.0.1 json11.o -fno-rtti -fno-exceptions
-	ln -sf json11.so.0.0.1 json11.so
+	g++ -fPIC -shared $(CFLAGS) -o libjson11.so.0.0.1 json11.o -fno-rtti -fno-exceptions
+	ln -sf libjson11.so.0.0.1 libjson11.so
 endif	
 
 ifeq ($(UNAME_S),Darwin)
 libextension=dylib
 json11: json11.cc json11.h
 	g++ -c $(CFLAGS) json11.cc -fno-rtti -fno-exceptions
-	g++ -fPIC -dynamiclib $(CFLAGS) -o json11.so.0.0.1 json11.o -fno-rtti -fno-exceptions
-	ln -sf json11.so.0.0.1 json11.dylib
+	g++ -fPIC -dynamiclib $(CFLAGS) -o libjson11.so.0.0.1 json11.o -fno-rtti -fno-exceptions
+	ln -sf libjson11.so.0.0.1 libjson11.dylib
 endif	
 
 clean:
-	rm -f test json11.so*
-
-install: json11.pc json11.$(libextension)
+	rm -f test libjson11.$(libextension) libjson11.$(libextension).0.0.1
+ 
+install: json11.pc libjson11.$(libextension)
 	mkdir -p $(libdir)
 	mkdir -p $(includedir)
-	install -m 0755 json11.$(libextension) $(libdir)
+	install -m 0755 libjson11.$(libextension) $(libdir)
 	cp json11.h $(includedir)/json11.h
 	cp json11.pc $(pkgdir)/json11.pc
 
 .PHONY: install
 
 uninstall:
-	rm $(libdir)/json11.$(libextension)
+	rm $(libdir)/libjson11.$(libextension)
 	rm $(includedir)/json11.h
 

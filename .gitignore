@@ -1,5 +1,5 @@
 test
-json11.dSYM
+*.dSYM
 json11.so*
 .DS_Store
 .project
