@@ -1,0 +1,12 @@
+Source: json11
+Section: media
+Priority: extra
+Maintainer: Fastsociety Ops <ops@fastsociety.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Homepage: http://cameo.tv
+
+Package: json11
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: json11 is a tiny JSON library for C++11, providing JSON parsing and serialization.

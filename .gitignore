@@ -1,1 +1,7 @@
 test
+json11.dSYM
+json11.so*
+.DS_Store
+.project
+*.o
+
