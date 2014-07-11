@@ -54,7 +54,7 @@ json11: json11.cc json11.h
 endif	
 
 clean:
-	rm -f test libjson11.$(libextension) libjson11.$(libextension).0.0.1
+	rm -f test libjson11.$(libextension) libjson11.dylib.0.0.1 libjson11.so.0.0.1
  
 install: json11.pc libjson11.$(libextension)
 	mkdir -p $(libdir)
