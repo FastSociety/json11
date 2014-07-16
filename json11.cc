@@ -174,20 +174,20 @@ public:
     JsonInt(double value) : Value(value) {}
 };
 
-class JsonBoolean final : public Value<Json::BOOL, bool> {
+class JsonBoolean : public Value<Json::BOOL, bool> {
     bool bool_value() const { return m_value; }
 public:
     JsonBoolean(bool value) : Value(value) {}
 };
 
-class JsonString final : public Value<Json::STRING, string> {
+class JsonString : public Value<Json::STRING, string> {
     const string &string_value() const { return m_value; }
 public:
     JsonString(const string &value) : Value(value) {}
     JsonString(string &&value)      : Value(move(value)) {}
 };
 
-class JsonArray final : public Value<Json::ARRAY, Json::array> {
+class JsonArray : public Value<Json::ARRAY, Json::array> {
     const Json::array &array_items() const { return m_value; }
     const Json & operator[](size_t i) const;
 public:
@@ -195,7 +195,7 @@ public:
     JsonArray(Json::array &&value)      : Value(move(value)) {}
 };
 
-class JsonObject final : public Value<Json::OBJECT, Json::object> {
+class JsonObject : public Value<Json::OBJECT, Json::object> {
     const Json::object &object_items() const { return m_value; }
     const Json & operator[](const string &key) const;
 public:
@@ -203,7 +203,7 @@ public:
     JsonObject(Json::object &&value)      : Value(move(value)) {}
 };
 
-class JsonNull final : public Value<Json::NUL, std::nullptr_t> {
+class JsonNull : public Value<Json::NUL, std::nullptr_t> {
 public:
     JsonNull() : Value(nullptr) {}
 };
