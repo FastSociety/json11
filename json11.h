@@ -60,7 +60,7 @@ namespace json11 {
 
 class JsonValue;
 
-class Json final {
+class Json {
 public:
     // Types
     enum Type {
