@@ -156,7 +156,7 @@ protected:
     void dump(string &out) const { json11::dump(m_value, out); }
 };
 
-class JsonDouble final : public Value<Json::NUMBER, double> {
+class JsonDouble : public Value<Json::NUMBER, double> {
     double number_value() const { return m_value; }
     int int_value() const { return m_value; }
     bool equals(const JsonValue * other) const { return m_value == other->number_value(); }
@@ -165,7 +165,7 @@ public:
     JsonDouble(double value) : Value(value) {}
 };
 
-class JsonInt final : public Value<Json::NUMBER, int> {
+class JsonInt : public Value<Json::NUMBER, int> {
     double number_value() const { return m_value; }
     int int_value() const { return m_value; }
     bool equals(const JsonValue * other) const { return m_value == other->number_value(); }
