@@ -9,6 +9,7 @@
 #include <unordered_map>
 
 using namespace json11;
+using namespace std;
 using std::string;
 
 // Check that Json has the properties we want.
