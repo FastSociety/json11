@@ -40,14 +40,14 @@ test: test.cc json11
 
 ifeq ($(UNAME_S),Linux)
 json11: json11.cc json11.h
-	g++ -c $(CFLAGS) json11.cc -fno-rtti -fno-exceptions
+	g++ -fPIC -c $(CFLAGS) json11.cc -fno-rtti -fno-exceptions
 	g++ -fPIC -shared $(CFLAGS) -o libjson11.$(libextension) json11.o -fno-rtti -fno-exceptions
 endif	
 
 ifeq ($(UNAME_S),Darwin)
 libextension=dylib
 json11: json11.cc json11.h
-	g++ -c $(CFLAGS) json11.cc -fno-rtti -fno-exceptions
+	g++ -fPIC -c $(CFLAGS) json11.cc -fno-rtti -fno-exceptions
 	g++ -fPIC -dynamiclib $(CFLAGS) -o libjson11.$(libextension) json11.o -fno-rtti -fno-exceptions
 endif	
 
