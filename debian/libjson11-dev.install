@@ -1,0 +1,3 @@
+usr/lib/json11.pc usr/lib/pkgconfig
+# header files
+usr/include/*

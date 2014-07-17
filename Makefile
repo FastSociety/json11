@@ -14,7 +14,7 @@ endif
 
 all: packageFile json11
 
-prefix=/usr/local
+prefix=$(DESTDIR)/usr/local
 libdir=${prefix}/lib
 pkgdir=${libdir}/pkgconfig
 includedir=${prefix}/include

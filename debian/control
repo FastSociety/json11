@@ -1,12 +1,28 @@
-Source: json11
-Section: media
-Priority: extra
+Source: libjson11
+Priority: optional
+Section: devel
 Maintainer: Fastsociety Ops <ops@fastsociety.com>
-Build-Depends: debhelper (>= 8.0.0)
-Standards-Version: 3.9.2
-Homepage: http://cameo.tv
+Build-Depends: debhelper (>= 8), libgcc-4.8-dev (>=4.8.1)
+Standards-Version: 3.9.3
+Vcs-Git: https://github.com/FastSociety/json11.git
+Vcs-Browser: https://github.com/FastSociety/json11
+Homepage: https://github.com/FastSociety/json11
 
-Package: json11
+Package: libjson11-dev
+Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: json11 is a tiny JSON library for C++11, providing JSON parsing and serialization.
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}, libjson11 (= ${binary:Version})
+Description: development files for libjson11
+ This package contains the header files and library needed to compile
+ applications that use libjson11.
+
+Package: libjson11
+Section: libs
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: json11 library
+ json11 is a tiny JSON library for C++11, providing JSON parsing and serialization.
