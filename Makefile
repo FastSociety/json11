@@ -57,6 +57,7 @@ clean:
 install: json11.pc libjson11.$(libextension)
 	mkdir -p $(libdir)
 	mkdir -p $(includedir)
+	mkdir -p $(pkgdir)
 	install -m 0755 libjson11.$(libextension) $(libdir)
 	cp json11.h $(includedir)/json11.h
 	cp json11.pc $(pkgdir)/json11.pc
